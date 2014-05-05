@@ -1,0 +1,14 @@
+{
+	"extName": {
+		"message": "Expand URL",
+		"description": "Extension name."
+	},
+	"extDesc": {
+		"message": "Open shortened URLs in a new tab",
+		"description": "Open shortened URLs in a new tab"
+	},
+	"context_menu_title": {
+		"message": "Expand URL",
+		"description": "Text that will appear in context menu"
+	}
+}
