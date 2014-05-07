@@ -4,8 +4,8 @@
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
 	console.log('this is the url obtained: ' + info.linkUrl);
 	//get shortened url and invoke url shortening service
-	//http://api.unshorten.it/?shortURL=http://onforb.es/1j2shAC&apiKey=IBTjP5fjHTRQodHt4oylqTyzHH7v6W1X&responseFormat=json
-	var fullUrl = Config.unshorten_url + '?apiKey=' + Config.api_key 
+	//http://api.unshorten.it/?shortURL=http://onforb.es/1j2shAC&apiKey=&responseFormat=json
+	var fullUrl = Config.unshorten_url + '?apiKey=' + Config.api_key
 		+ '&responseFormat=' + Config.api_response_format + '&shortURL=' + info.linkUrl;
 	console.log('full url to invoke: ' + fullUrl);
 	$.get(fullUrl, function(data) {
@@ -21,7 +21,7 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
         	console.log('received error from api: ' + data.error);
         }
     }, 'json');
-	
+
 });
 
 /**
