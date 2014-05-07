@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 200);
   });
 
-  $('#launch_modal').click(function(ev) {
+  $('#resetSettings').click(function(ev) {
     ev.preventDefault();
     var modal = $('.overlay').clone();
     $(modal).removeAttr('style');
@@ -48,6 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     $(modal).find('.page').click(function(ev) {
       ev.stopPropagation();
+    });
+    $(modal).find('#confirmResetAccept').click(function() {
+      //this is clicked after modal is displayed, so all it should do is reset
+      if (!resetUserSettings()) {
+        console.log('reset failed');
+      } else {
+        console.log('reset successful');
+        //update UI with new settings
+        restoreUserSettings();
+        //disable Save & discard changes if they were active
+        $('#saveSettings').attr('disabled', true);
+        $('#discardSettings').attr('disabled', true);
+      }
     });
     $('body').append(modal);
   });
@@ -88,7 +101,32 @@ document.addEventListener('DOMContentLoaded', function() {
     $('#saveSettings').attr('disabled', true);
     $('#discardSettings').attr('disabled', true);
   });
+
+
+  //this function should be run every time page is loaded to ensure all settings
+  //are in sync
+  restoreUserSettings();
 });
+
+function resetUserSettings() {
+  console.log('about to reset default user settings')
+  //put default values for all settings
+  var userSettings = {
+    "open_expanded_url_action": Config.default_expand_url_action
+  };
+  chrome.storage.sync.set(userSettings);
+  if (chrome.runtime.lastError !== undefined) {
+    //throw an error
+    console.error(
+      'an error occurred while resetting settings in chrome storage: ' +
+      chrome.runtime.lastError);
+    //show error message
+    return false;
+  } else {
+    //show success message
+    return true;
+  }
+}
 
 /**
  * function to save user settings to chrome storage
