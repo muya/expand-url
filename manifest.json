@@ -12,11 +12,19 @@
 	"author": "Fred Muya",
 	"background": {
 		"persistent": false,
-		"scripts": ["js/jquery.min.js", "js/app-config.js","js/background.js"]
+		"scripts": [
+			"js/jquery.min.js",
+			"js/app-config.js",
+			"js/background.js",
+			"js/options.js"
+		]
 	},
+	"options_page": "options.html",
 	"permissions": [
 		"contextMenus",
 		"tabs",
-		"http://*.unshorten.it/*"
+		"storage",
+		"http://*.unshorten.it/*",
+		"https://*.cloudflare.com/*"
 	]
 }
