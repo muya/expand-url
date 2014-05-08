@@ -52,14 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
     $(modal).find('#confirmResetAccept').click(function() {
       //this is clicked after modal is displayed, so all it should do is reset
       if (!resetUserSettings()) {
-        console.log('reset failed');
+        displayUserAlert('error', chrome.i18n.getMessage('resetToDefaultFailed'));
       } else {
         console.log('reset successful');
         //update UI with new settings
-        restoreUserSettings();
+        restoreUserSettings(false);
         //disable Save & discard changes if they were active
         $('#saveSettings').attr('disabled', true);
         $('#discardSettings').attr('disabled', true);
+        displayUserAlert('success', chrome.i18n.getMessage('resetToDefaultSuccess'));
       }
     });
     $('body').append(modal);
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //handler for discardSettings button on Settings page
   $('#discardSettings').click(function() {
     //user's settings should be restored from chrome storage
-    restoreUserSettings();
+    restoreUserSettings(true);
 
     //Save & Discard changes buttons should be disabled
     $('#saveSettings').attr('disabled', true);
@@ -95,17 +96,19 @@ document.addEventListener('DOMContentLoaded', function() {
     userSettings.open_expanded_url_action = expand_url_action;
     //now save
     if (!saveUserSettings(userSettings)) {
+      displayUserAlert('error', chrome.i18n.getMessage('saveUserSettingsFailed'));
       return;
     }
     //save was ok, disable Save & Discard Changes buttons
     $('#saveSettings').attr('disabled', true);
     $('#discardSettings').attr('disabled', true);
+    displayUserAlert('success', chrome.i18n.getMessage('saveUserSettingsSuccess'));
   });
 
 
   //this function should be run every time page is loaded to ensure all settings
   //are in sync
-  restoreUserSettings();
+  restoreUserSettings(false);
 });
 
 function resetUserSettings() {
@@ -137,24 +140,30 @@ function saveUserSettings(data) {
     //throw an error
     console.error('an error occurred while saving to chrome storage: ' +
       chrome.runtime.lastError);
-    //show error message
     return false;
   } else {
-    //show success message
     return true;
   }
+}
+
+function displayUserAlert(level, message){
+  $(document).trigger("add-alerts", [{
+    'message': message,
+    'priority': level
+  }]);
 }
 
 /**
  * function to restore user changes to the last previously changed ones
  */
-function restoreUserSettings() {
+function restoreUserSettings(showAlert) {
   chrome.storage.sync.get('open_expanded_url_action',
     function(data) {
       if (chrome.runtime.lastError !== undefined) {
         //throw an error
         console.error('an error occurred while fetching chrome storage data: ' +
           chrome.runtime.lastError);
+        displayUserAlert('error', chrome.i18n.getMessage('restoreUserSettingsFailed'));
         return;
       }
       if (data.open_expanded_url_action === undefined) {
@@ -162,11 +171,15 @@ function restoreUserSettings() {
         data.open_expanded_url_action = Config.default_expand_url_action;
       }
       if (!updateSettingsUI(data)) {
-        console.error('an error occurred while updating settings UI');
+        console.log('an error occurred while updating settings UI');
+        displayUserAlert('warning', chrome.i18n.getMessage('restoreUserSettingsSuccessNoUpdate'));
         return;
       }
       //show success message to user
-      console.log('settings reset OK')
+      console.log('settings reset OK');
+      if (showAlert === true) {
+        displayUserAlert('success', chrome.i18n.getMessage('restoreUserSettingsSuccess'));
+      }
     });
 }
 

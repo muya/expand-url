@@ -10,5 +10,33 @@
 	"context_menu_title": {
 		"message": "Expand URL",
 		"description": "Text that will appear in context menu"
+	},
+	"resetToDefaultFailed":{
+		"message": "Oops! We're unable to reset user settings to default, please reload the page and try again.",
+		"description": "Error message displayed to user when an error occurs while resetting extension configs to default"
+	},
+	"resetToDefaultSuccess":{
+		"message": "Fresh slate! Your settings were reset to the application default",
+		"description": "Message displayed to user when they successfully reset extension configs to default"
+	},
+	"saveUserSettingsFailed":{
+		"message": "Oops! We're unable to save your settings right now. Please reload the page and try again.",
+		"description": "Error message displayed to user when an error occurs while saving extension configs"
+	},
+	"saveUserSettingsSuccess":{
+		"message": "Good to go! Your settings were saved successfully.",
+		"description": "Message displayed to user when their extension configs are saved successfully"
+	},
+	"restoreUserSettingsFailed":{
+		"message": "Oops! We're unable to restore your settings right now. Please reload the page and try again.",
+		"description": "Error message displayed to user when an error occurs while restoring extension configs"
+	},
+	"restoreUserSettingsSuccess":{
+		"message": "You're safe! Your settings were restored.",
+		"description": "Message displayed to user when their extension configs are restored successfully"
+	},
+	"restoreUserSettingsSuccessNoUpdate":{
+		"message": "Your settings were restored successfully, but we couldn't update the page. Please reload this page.",
+		"description": "Message displayed to user when their extension configs are restored successfully, but an error occurs while updating the page"
 	}
 }
