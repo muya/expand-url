@@ -38,5 +38,87 @@
 	"restoreUserSettingsSuccessNoUpdate":{
 		"message": "Your settings were restored successfully, but we couldn't update the page. Please reload this page.",
 		"description": "Message displayed to user when their extension configs are restored successfully, but an error occurs while updating the page"
+	},
+	"optionsTitle":{
+		"message": "Expand URL Options",
+		"description": "Title of Expand URL options page"
+	},
+	"Settings":{
+		"message": "Settings",
+		"description": "Settings"
+	},
+	"About":{
+		"message": "About",
+		"description": "About"
+	},
+	"Version":{
+		"message": "Version",
+		"description": "Version"
+	},
+	"applicationCreatedByText":{
+		"message": "This application was created by <a href=\"http://muya.co.ke\" target=\"_blank\">Fred Muya</a> and released under the The MIT License (MIT)",
+		"description": "Text showing who created the app"
+	},
+	"viewProjectOnGitHub":{
+		"message": "View project on <a href=\"https://github.com/muya/expand-url\" target=\"_blank\">GitHub</a>",
+		"description": "View project on GitHub"
+	},
+	"Developer":{
+		"message": "Developer",
+		"description": "Developer"
+	},
+	"versionText":{
+		"message": "You have $1 Version $2",
+		"description": "Text showing which version of the application is running",
+		"placeholders": {
+			"details": {
+				"content": "$1",
+				"example": "ExpandURL"				
+			},
+			"details": {
+				"content": "$2",
+				"example": "0.2"				
+			}
+		}
+	},
+	"openingExpandedURLsContentHeader":{
+		"message": "Opening Expanded URLs &nbsp; <small>Choose what happens when you click on Expand URL</small>",
+		"description": "Text for Opening Expanded URLs under Settings page"
+	},
+	"autoRedirectRadioLabel":{
+		"message": "Automatically re-direct to expanded URL",
+		"description": "Text Automatically Redirect radio button label"
+	},
+	"previewURLRadioLabel":{
+		"message": "Preview the expanded URL before redirecting",
+		"description": "Text Preview URL radio button label"
+	},
+	"resetToDefaultModalHeader":{
+		"message": "Reset settings to default",
+		"description": "Header for modal that comes up when you click on reset to default"
+	},
+	"resetToDefaultModalDialogText":{
+		"message": "Are you sure you want to reset all settings to the default? This action cannot be undone",
+		"description": "Dialog text for modal that comes up when you click on reset to default"
+	},
+	"resetToDefaultModalRejectResetButton":{
+		"message": "No, keep my settings",
+		"description": "Cancel Reset default Button text for modal that comes up when you click on reset to default"
+	},
+	"resetToDefaultModalAcceptResetButton":{
+		"message": "Yes, I'm sure",
+		"description": "Accept Reset default Button text for modal that comes up when you click on reset to default"
+	},
+	"saveSettingsButton":{
+		"message": "Save",
+		"description": "Button text for Save option on settings page"
+	},
+	"discardSettingsButton":{
+		"message": "Discard Changes",
+		"description": "Button text for Discard Changes option on settings page"
+	},
+	"resetSettingsButton":{
+		"message": "Reset to default",
+		"description": "Button text for Reset to default option on settings page"
 	}
 }

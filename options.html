@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Chrome Bootstrap</title>
+  <title data-i18n="optionsTitle"></title>
   <link rel="stylesheet" type="text/css" href="modules/chrome-bootstrap/chrome-bootstrap.css">
   <link rel="stylesheet" type="text/css" href="modules/bootstrap/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="modules/bootstrap/css/bootstrap.min.css">
@@ -9,75 +9,75 @@
 <body class="chrome-bootstrap">
   <div class="frame">
     <div class="navigation">
-      <h1><a href="#">Expand URL</a></h1>
+      <h1><a href="#" data-i18n="extName"></a></h1>
       <ul class="menu">
         <li class="selected">
-          <a href="#settings">Settings</a>
+          <a href="#settings" data-i18n="Settings"></a>
         </li>
       </ul>
       <ul class="menu">
         <li class="">
-          <a href="#about">About</a>
+          <a href="#about" data-i18n="About"></a>
         </li>
       </ul>
     </div>
     <div class="mainview view">
       <div id="settings" class="selected" style="">
         <header>
-          <h1>Settings</h1>
+          <h1 data-i18n="Settings"></h1>
         </header>
         <div class="content">
         <div data-alerts="alerts" id="userAlerts" data-fade="5000"></div>
-        <h2>Opening Expanded URLs &nbsp; <small>Choose what happens when you click on Expand URL</small></h2>
+        <h2 data-i18n="openingExpandedURLsContentHeader"></h2>
         <section>
           <div class="radio">
             <label>
               <input type="radio" name="openExpandedUrlOptions" value="redirect">
-              <span>Automatically re-direct to expanded URL</span>
+              <span data-i18n="autoRedirectRadioLabel"></span>
             </label>
           </div>
           <div class="radio">
             <label>
               <input type="radio" name="openExpandedUrlOptions" value="preview">
-              <span>Preview the expanded URL before redirecting</span>
+              <span data-i18n="previewURLRadioLabel"></span>
             </label>
           </div>
          </section>
          <div class="overlay" style="display: none;">
             <div class="page">
-              <h1>Reset settings to default</h1>
+              <h1 data-i18n="resetToDefaultModalHeader"></h1>
               <div class="close-button"></div>
               <div class="content-area">
-                Are you sure you want to reset all settings to the default? This action cannot be undone
+                <p data-i18n="resetToDefaultModalDialogText"></p>
               </div>
               <div class="action-area">
                 <div class="action-area-right">
                   <div class="button-strip">
-                    <button id="confirmResetReject">No, keep my settings</button>
-                    <button id="confirmResetAccept">Yes, I'm sure</button>
+                    <button id="confirmResetReject" data-i18n="resetToDefaultModalRejectResetButton"></button>
+                    <button id="confirmResetAccept" data-i18n="resetToDefaultModalAcceptResetButton"></button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        <button id="saveSettings" disabled>Save</button>
-        <button id="discardSettings" disabled>Discard Changes</button>
-        <button id="resetSettings">Reset to default</button>
+        <button id="saveSettings" disabled data-i18n="saveSettingsButton"></button>
+        <button id="discardSettings" disabled data-i18n="discardSettingsButton"></button>
+        <button id="resetSettings" data-i18n="resetSettingsButton"></button>
         </div>
       </div>
       <div id="about" class="" style="display: block;">
         <header>
-          <h1>About</h1>
+          <h1 data-i18n="About"></h1>
         </header>
         <div class="content">
-            <h3>Version</h3>
+            <h3 data-i18n="Version"></h3>
             <section>
-                <p>You have ExpandURL Version 0.1</p>
+                <p data-i18n="versionText"></p>
             </section>
-            <h3>Developer</h3>
+            <h3 data-i18n="Developer"></h3>
             <section>
-                <p>This application was created by <a href="http://muya.co.ke" target="_blank">Fred Muya</a> and released under the The MIT License (MIT)</p>
-                <p>View project on <a href="https://github.com/muya/expand-url" target="_blank">GitHub</a></p>
+                <p data-i18n="applicationCreatedByText"></p>
+                <p data-i18n="viewProjectOnGitHub"></p>
             </section>
         </div>
       </div>

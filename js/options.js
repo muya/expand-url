@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 200);
   });
 
+  //listener for modal to confirm reset user settings
   $('#resetSettings').click(function(ev) {
     ev.preventDefault();
     var modal = $('.overlay').clone();
@@ -105,11 +106,35 @@ document.addEventListener('DOMContentLoaded', function() {
     displayUserAlert('success', chrome.i18n.getMessage('saveUserSettingsSuccess'));
   });
 
+  //load all content for all page elements that require i18n
+  //(got this gem from: http://goo.gl/sDPHYh  :)
+  $(function() {
+        $('[data-i18n]').each(function() {
+            var el = $(this);
+            var key = el.data('i18n');
+            if (key === "versionText"){
+              el.html(chrome.i18n.getMessage(key, [chrome.i18n.getMessage("extName"), getVersion()]));
+            }
+            else{
+              //default handling
+              el.html(chrome.i18n.getMessage(key));
+            }
+            
+        });
+        // copy text of first <h1> if any to document title
+        // document.title = $('h1').first().text();
+    });
+
 
   //this function should be run every time page is loaded to ensure all settings
   //are in sync
   restoreUserSettings(false);
 });
+
+function getVersion() {
+  var details = chrome.app.getDetails();
+  return details.version;
+}
 
 function resetUserSettings() {
   console.log('about to reset default user settings')
