@@ -73,11 +73,11 @@
 		"placeholders": {
 			"details": {
 				"content": "$1",
-				"example": "ExpandURL"				
+				"example": "ExpandURL"
 			},
 			"details": {
 				"content": "$2",
-				"example": "0.2"				
+				"example": "0.2"
 			}
 		}
 	},
@@ -120,5 +120,9 @@
 	"resetSettingsButton":{
 		"message": "Reset to default",
 		"description": "Button text for Reset to default option on settings page"
+	},
+	"previewDefaultError":{
+		"message": "Sorry, an error occurred. Please try to open the shortened URL with Expand URL again.",
+		"description": "Generic error for failures while trying to open shortened URL"
 	}
 }

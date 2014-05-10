@@ -24,7 +24,7 @@
 		"contextMenus",
 		"tabs",
 		"storage",
-		"http://*.unshorten.it/*",
-		"https://*.cloudflare.com/*"
+		"http://localhost/*",
+		"http://*.muya.co.ke/*"
 	]
 }

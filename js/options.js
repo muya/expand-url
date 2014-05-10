@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
     $(modal).find('#confirmResetAccept').click(function() {
       //this is clicked after modal is displayed, so all it should do is reset
       if (!resetUserSettings()) {
-        displayUserAlert('error', chrome.i18n.getMessage('resetToDefaultFailed'));
+        displayUserAlert('error', chrome.i18n.getMessage(
+          'resetToDefaultFailed'));
       } else {
         console.log('reset successful');
         //update UI with new settings
@@ -61,7 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
         //disable Save & discard changes if they were active
         $('#saveSettings').attr('disabled', true);
         $('#discardSettings').attr('disabled', true);
-        displayUserAlert('success', chrome.i18n.getMessage('resetToDefaultSuccess'));
+        displayUserAlert('success', chrome.i18n.getMessage(
+          'resetToDefaultSuccess'));
       }
     });
     $('body').append(modal);
@@ -97,33 +99,33 @@ document.addEventListener('DOMContentLoaded', function() {
     userSettings.open_expanded_url_action = expand_url_action;
     //now save
     if (!saveUserSettings(userSettings)) {
-      displayUserAlert('error', chrome.i18n.getMessage('saveUserSettingsFailed'));
+      displayUserAlert('error', chrome.i18n.getMessage(
+        'saveUserSettingsFailed'));
       return;
     }
     //save was ok, disable Save & Discard Changes buttons
     $('#saveSettings').attr('disabled', true);
     $('#discardSettings').attr('disabled', true);
-    displayUserAlert('success', chrome.i18n.getMessage('saveUserSettingsSuccess'));
+    displayUserAlert('success', chrome.i18n.getMessage(
+      'saveUserSettingsSuccess'));
   });
 
   //load all content for all page elements that require i18n
   //(got this gem from: http://goo.gl/sDPHYh  :)
   $(function() {
-        $('[data-i18n]').each(function() {
-            var el = $(this);
-            var key = el.data('i18n');
-            if (key === "versionText"){
-              el.html(chrome.i18n.getMessage(key, [chrome.i18n.getMessage("extName"), getVersion()]));
-            }
-            else{
-              //default handling
-              el.html(chrome.i18n.getMessage(key));
-            }
-            
-        });
-        // copy text of first <h1> if any to document title
-        // document.title = $('h1').first().text();
+    $('[data-i18n]').each(function() {
+      var el = $(this);
+      var key = el.data('i18n');
+      if (key === "versionText") {
+        el.html(chrome.i18n.getMessage(key, [chrome.i18n.getMessage(
+          "extName"), getVersion()]));
+      } else {
+        //default handling
+        el.html(chrome.i18n.getMessage(key));
+      }
+
     });
+  });
 
 
   //this function should be run every time page is loaded to ensure all settings
@@ -171,13 +173,6 @@ function saveUserSettings(data) {
   }
 }
 
-function displayUserAlert(level, message){
-  $(document).trigger("add-alerts", [{
-    'message': message,
-    'priority': level
-  }]);
-}
-
 /**
  * function to restore user changes to the last previously changed ones
  */
@@ -188,7 +183,8 @@ function restoreUserSettings(showAlert) {
         //throw an error
         console.error('an error occurred while fetching chrome storage data: ' +
           chrome.runtime.lastError);
-        displayUserAlert('error', chrome.i18n.getMessage('restoreUserSettingsFailed'));
+        displayUserAlert('error', chrome.i18n.getMessage(
+          'restoreUserSettingsFailed'));
         return;
       }
       if (data.open_expanded_url_action === undefined) {
@@ -197,13 +193,15 @@ function restoreUserSettings(showAlert) {
       }
       if (!updateSettingsUI(data)) {
         console.log('an error occurred while updating settings UI');
-        displayUserAlert('warning', chrome.i18n.getMessage('restoreUserSettingsSuccessNoUpdate'));
+        displayUserAlert('warning', chrome.i18n.getMessage(
+          'restoreUserSettingsSuccessNoUpdate'));
         return;
       }
       //show success message to user
       console.log('settings reset OK');
       if (showAlert === true) {
-        displayUserAlert('success', chrome.i18n.getMessage('restoreUserSettingsSuccess'));
+        displayUserAlert('success', chrome.i18n.getMessage(
+          'restoreUserSettingsSuccess'));
       }
     });
 }
