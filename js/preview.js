@@ -32,7 +32,8 @@ function onPreviewLoad(request) {
         //an error probably caused us to get malformed response
         //enable error msg
         $('#resolvedUrl').css('display', 'none');
-        $('#unResolvedUrl').css('display', 'initial');
+        $('#unResolvedUrl').css('display', 'block');
+        $('#unResolvedUrlText').text(chrome.i18n.getMessage('unableToResolveUrlNoConn'));
       }
       else if (response.status === 1){
         //invocation OK, got a url, we expect a long url in response.data.expandedUrl
@@ -45,7 +46,8 @@ function onPreviewLoad(request) {
         console.error('received non-success status | status: ' + response.data.status
           + ' | message: ' + response.data.message);
         $('#resolvedUrl').css('display', 'none');
-        $('#unResolvedUrl').css('display', 'initial');
+        $('#unResolvedUrl').css('display', 'block');
+        $('#unResolvedUrlText').text(chrome.i18n.getMessage('unableToResolveUrl'));
       }
     })
   });

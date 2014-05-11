@@ -67,6 +67,10 @@
 		"message": "Developer",
 		"description": "Developer"
 	},
+	"Close":{
+		"message": "Close",
+		"description": "Close"
+	},
 	"versionText":{
 		"message": "You have $1 Version $2",
 		"description": "Text showing which version of the application is running",
@@ -126,7 +130,15 @@
 		"description": "Generic error for failures while trying to open shortened URL"
 	},
 	"unableToResolveUrl":{
-		"message": "Oops! We couldn't resolve your URL. Please try again.",
+		"message": "Oops! We couldn't expand your URL. Please try again.",
 		"description": "Error when we're unable to resolve the URL"
+	},
+	"unableToResolveUrlNoConn":{
+		"message": "Oops! We couldn't expand your URL. Please check your Internet connection and try again.",
+		"description": "Error when we're unable to resolve the URL due to network error"
+	},
+	"openExpandedURL":{
+		"message": "Open Expanded URL",
+		"description": "Open Expanded URL"
 	}
 }
