@@ -4,8 +4,8 @@
 		"description": "Extension name."
 	},
 	"extDesc": {
-		"message": "Open shortened URLs in a new tab",
-		"description": "Open shortened URLs in a new tab"
+		"message": "View where shortened URLs lead to before opening them",
+		"description": "Extension description"
 	},
 	"context_menu_title": {
 		"message": "Expand URL",
