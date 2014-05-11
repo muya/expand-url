@@ -86,11 +86,11 @@
 		"description": "Text for Opening Expanded URLs under Settings page"
 	},
 	"autoRedirectRadioLabel":{
-		"message": "Automatically re-direct to expanded URL",
+		"message": "Automatically open expanded URL in a new tab <title>Note: There might be a few seconds delay after clicking while we expand the URL</title>",
 		"description": "Text Automatically Redirect radio button label"
 	},
 	"previewURLRadioLabel":{
-		"message": "Preview the expanded URL before redirecting",
+		"message": "Preview the expanded URL in a new tab before opening it",
 		"description": "Text Preview URL radio button label"
 	},
 	"resetToDefaultModalHeader":{
@@ -124,5 +124,9 @@
 	"previewDefaultError":{
 		"message": "Sorry, an error occurred. Please try to open the shortened URL with Expand URL again.",
 		"description": "Generic error for failures while trying to open shortened URL"
+	},
+	"unableToResolveUrl":{
+		"message": "Oops! We couldn't resolve your URL. Please try again.",
+		"description": "Error when we're unable to resolve the URL"
 	}
 }

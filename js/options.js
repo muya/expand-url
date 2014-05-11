@@ -139,7 +139,6 @@ function getVersion() {
 }
 
 function resetUserSettings() {
-  console.log('about to reset default user settings')
   //put default values for all settings
   var userSettings = {
     "open_expanded_url_action": Config.default_expand_url_action
@@ -192,7 +191,6 @@ function restoreUserSettings(showAlert) {
         data.open_expanded_url_action = Config.default_expand_url_action;
       }
       if (!updateSettingsUI(data)) {
-        console.log('an error occurred while updating settings UI');
         displayUserAlert('warning', chrome.i18n.getMessage(
           'restoreUserSettingsSuccessNoUpdate'));
         return;

@@ -9,36 +9,27 @@ chrome.runtime.onMessage.addListener(
       .attr('data-orig-tab-id', request.originalTabID);
     //check if there was an error
     if (request.error !== undefined) {
-      console.log('request error was defined');
+      //message sent was an error msg
       displayUserAlert('error', request.error);
       return;
     }
-    console.log(sender.tab ?
-      "from a content script:" + sender.tab.url :
-      "from the extension");
-    console.log('received: ' + request.clickedUrl);
     onPreviewLoad(request);
   });
 
 //activities defined in here should run when we load the preview page
 function onPreviewLoad(request) {
   //first, make the request to fetch original url
-  // $.post('http://muya.co.ke/expand-url/', function(data){
-  //
-  // });
   $.ajax({
     type: "POST",
-    url: "http://localhost/expand-url-api/",
+    url: Config.expand_url_api,
     data: {
       'shortUrl': request.clickedUrl
     },
     success: (function(response){
       //stop animation
-      console.log('api call is complete...')
       $('#translateToImg').remove();
       if(response.status === undefined){
         //an error probably caused us to get malformed response
-        console.error('response status is undefined');
         //enable error msg
         $('#resolvedUrl').css('display', 'none');
         $('#unResolvedUrl').css('display', 'initial');
@@ -46,7 +37,6 @@ function onPreviewLoad(request) {
       else if (response.status === 1){
         //invocation OK, got a url, we expect a long url in response.data.expandedUrl
         var expandedUrl = response.data.expandedUrl;
-        console.log('long url: ' + expandedUrl);
         $('#resolvedUrl').text(expandedUrl);
         $('#openExpandedURL').attr('href', expandedUrl).css('display', 'initial');
       }
@@ -55,10 +45,11 @@ function onPreviewLoad(request) {
         console.error('received non-success status | status: ' + response.data.status
           + ' | message: ' + response.data.message);
         $('#resolvedUrl').css('display', 'none');
-        $('#unResolvedUrl').css('display', 'initial')
+        $('#unResolvedUrl').css('display', 'initial');
       }
     })
   });
+  //meanwhile...
   //show originalUrlDiv
   $('#originalUrlDiv').css('display', 'block');
   //load receved url into required div
@@ -70,6 +61,9 @@ function onPreviewLoad(request) {
 
 }
 
+/**
+* this function defines animation to make the 'loading' image appear to 'pulse'
+*/
 function animateLoadingImage() {
   $.when(
     $('#translateToImg').delay(200).animate({
@@ -110,6 +104,5 @@ $(function() {
       //default handling
       el.html(chrome.i18n.getMessage(key));
     }
-
   });
 });
